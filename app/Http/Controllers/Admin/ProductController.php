@@ -91,7 +91,7 @@ class ProductController extends Controller
         'price'=> $request->price,
     ]);
 
-    return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+    return redirect()->route('products.index')->with('edit', 'Product updated successfully.');
 }
 
 
@@ -104,6 +104,6 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+        return redirect()->route('products.index')->with('delete', 'Product deleted successfully.');
     }
 }

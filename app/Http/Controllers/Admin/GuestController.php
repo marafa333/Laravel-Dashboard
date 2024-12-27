@@ -99,7 +99,7 @@ class GuestController extends Controller
         'password' => $hashedPassword,
     ]);
 
-    return redirect()->route('guests.index')->with('success', 'guest updated successfully.');
+    return redirect()->route('guests.index')->with('edit', 'guest updated successfully.');
 }
 
 
@@ -112,6 +112,6 @@ class GuestController extends Controller
 
         $guest->delete();
 
-        return redirect()->route('guests.index')->with('success', 'Guest deleted successfully.');
+        return redirect()->route('guests.index')->with('delete', 'Guest deleted successfully.');
     }
 }

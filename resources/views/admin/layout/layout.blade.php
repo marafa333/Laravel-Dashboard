@@ -258,41 +258,43 @@
                         </li>
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image" />
-                                <span class="hidden-xs">Alexander Pierce</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <!-- User image -->
-                                <li class="user-header">
-                                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                                    <p>
-                                        Alexander Pierce - Web Developer
-                                        <small>Member since Nov. 2012</small>
-                                    </p>
+
+
+                            <!-- Authentication Links -->
+                            @guest
+                                @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                                <!-- Menu Body -->
-                                <li class="user-body">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </li>
-                                <!-- Menu Footer-->
-                                <li class="user-footer">
-                                    <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                    </div>
-                                    <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                                    </div>
-                                </li>
-                            </ul>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown" href="#"
+                                    role="button" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                        </a>
                         </li>
                     </ul>
                 </div>
@@ -304,11 +306,8 @@
             <section class="sidebar">
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image" />
-                    </div>
                     <div class="pull-left info">
-                        <p>Alexander Pierce</p>
+                        <p>{{ $user->name }}</p>
 
                         <a href="/"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
@@ -341,9 +340,9 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="{{ route('products.create') }}"><i class="fa fa-circle-o"></i>Add
-                                Product</a></li>
+                                    Product</a></li>
                             <li><a href="{{ route('products.index') }}"><i class="fa fa-circle-o"></i>All
-                                Products</a></li>
+                                    Products</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -367,14 +366,14 @@
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
 
-                    @yield('contect')
-                </div><!-- /.row -->
-            </section><!-- /.content -->
-        </div><!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All
-            rights reserved.
-        </footer>
+            @yield('contect')
+        </div><!-- /.row -->
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All
+        rights reserved.
+    </footer>
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.3 -->
