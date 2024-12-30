@@ -3,18 +3,29 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Guest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class ProductController extends Controller
+class WebPageController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+
+        $categories = Category::all();
         $products = Product::all();
-        return view('web.index', compact('products'));
+        $guests = Guest::all();
+
+        $num['cate_num'] = $categories->count();
+        $num['prod_num'] = $products->count();
+        $num['gust_num'] = $guests->count();
+
+        return view('web.index', compact('categories', 'products', 'guests', 'num'));
     }
 
     /**

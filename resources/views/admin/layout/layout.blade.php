@@ -316,9 +316,9 @@
                 <ul class="sidebar-menu">
 
                     <li>
-                        <a href="/">
-                            <i class="fa fa-th"></i> <span>Home Page</span> <small
-                                class="label pull-right bg-green">HOME</small>
+                        <a href="{{ route('index') }}">
+                            <i class="fa fa-th"></i> <span>Admin area</span> <small
+                                class="label pull-right bg-green">Dashboard</small>
                         </a>
                     </li>
                     <li class="treeview">

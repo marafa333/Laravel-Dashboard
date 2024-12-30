@@ -19,13 +19,13 @@
     <!-- small box -->
     <div class="small-box bg-aqua">
       <div class="inner">
-        <h3>150</h3>
-        <p>New Orders</p>
+        <h3>{{ $num['cate_num'] }}</h3>
+        <p>Categories</p>
       </div>
       <div class="icon">
         <i class="ion ion-bag"></i>
       </div>
-      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="{{ route('categories.index') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
     </div>
 </div><!-- ./col -->
   <div class="col-lg-3 col-xs-6">
@@ -45,26 +45,26 @@
     <!-- small box -->
     <div class="small-box bg-yellow">
       <div class="inner">
-        <h3>44</h3>
-        <p>User Registrations</p>
+        <h3>{{ $num['gust_num'] }}</h3>
+        <p>Guests</p>
       </div>
       <div class="icon">
         <i class="ion ion-person-add"></i>
       </div>
-      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="{{ route('guests.index') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div><!-- ./col -->
   <div class="col-lg-3 col-xs-6">
     <!-- small box -->
     <div class="small-box bg-red">
       <div class="inner">
-        <h3>65</h3>
-        <p>Unique Visitors</p>
+        <h3>{{ $num['prod_num'] }}</h3>
+        <p> Products</p>
       </div>
       <div class="icon">
         <i class="ion ion-pie-graph"></i>
       </div>
-      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="{{ route('products.index') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div><!-- ./col -->
 
