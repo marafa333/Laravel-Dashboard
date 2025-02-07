@@ -7,7 +7,6 @@ use App\Models\Category;
 use App\Models\Guest;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class WebPageController extends Controller
 {

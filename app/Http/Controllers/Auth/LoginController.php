@@ -50,7 +50,7 @@ class LoginController extends Controller
     $request->session()->regenerateToken();
 
     // Redirect to your desired page
-    return redirect('/admin-area');
+    return redirect('/login');
 }
 
 }

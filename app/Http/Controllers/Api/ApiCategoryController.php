@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Guest;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ApiCategoryController extends Controller
@@ -14,7 +16,14 @@ class ApiCategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return response()->json($categories);
+        $products = Product::all();
+        $guests = Guest::all();
+
+        return response()->json([
+            'categories' => $categories,
+            'products'   => $products,
+            'guests'     => $guests,
+        ]);
     }
 
     /**

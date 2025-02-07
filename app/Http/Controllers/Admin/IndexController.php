@@ -13,6 +13,8 @@ class IndexController extends Controller
      */
     public function index()
     {
+        $num = [];
+
         $cates_num = DB::select('SELECT count(id) as num from categories');
         $num['cate_num'] = $cates_num[0]->num;
 
@@ -21,12 +23,12 @@ class IndexController extends Controller
 
         $gusts_num = DB::select('SELECT count(id) as num from guests');
         $num['gust_num'] = $gusts_num[0]->num;
-        
+
         return view('admin.index', [
-            'user' => auth()->user(),
             'num' => $num,
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.

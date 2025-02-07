@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
@@ -13,9 +12,9 @@ class CategoryController extends Controller
     // Display a listing of categories
     public function index()
     {
-        $categories = DB::select('select * from categories');
+        $categories = Category::all();
         return view('admin.categories.index', [
-            'user' => auth()->user(),
+
             'categories' => $categories,
         ]);
     }
@@ -24,7 +23,7 @@ class CategoryController extends Controller
     public function create()
     {
         return view('admin.categories.create', [
-            'user' => auth()->user(),
+
         ]);
     }
 
@@ -60,7 +59,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         return view('admin.categories.show', [
-            'user' => auth()->user(),
+
             'category' => $category,
         ]);
     }
@@ -69,7 +68,7 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         return view('admin.categories.edit', [
-            'user' => auth()->user(),
+
             'category' => $category,
         ]);
     }

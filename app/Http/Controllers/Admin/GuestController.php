@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Guest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class GuestController extends Controller
@@ -13,9 +12,9 @@ class GuestController extends Controller
     // Display a listing of guests
     public function index()
     {
-        $guests = DB::select('select * from guests');
+        $guests = guest::all();
         return view('admin.guests.index', [
-            'user' => auth()->user(),
+            
             'guests' => $guests,
         ]);
     }
@@ -24,7 +23,7 @@ class GuestController extends Controller
     public function create()
     {
         return view('admin.guests.create', [
-            'user' => auth()->user(),
+
         ]);
     }
 
@@ -66,7 +65,7 @@ class GuestController extends Controller
     public function show(Guest $guest)
     {
         return view('admin.guests.show', [
-            'user' => auth()->user(),
+
             'guest' => $guest,
         ]);
     }
@@ -75,7 +74,7 @@ class GuestController extends Controller
     public function edit(Guest $guest)
     {
         return view('admin.guests.edit', [
-            'user' => auth()->user(),
+
             'guest' => $guest,
         ]);
     }
